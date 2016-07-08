@@ -1,0 +1,21 @@
+#
+# error handling
+#
+ErrorDocument 404 error-msg.php
+ErrorDocument 500 error-msg.php
+ErrorDocument 400 error-msg.php
+ErrorDocument 401 error-msg.php
+ErrorDocument 403 error-msg.php
+#
+# end error handling
+#
+
+#
+# hide .php file extensions in urls
+#
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+#
+# end hiding file extensions
+#
