@@ -1,23 +1,22 @@
 <?php include 'header.php'; ?>
-  <div class='row'>
-    <div class='six gray'>
+<div id='item-group' class='cta-group'>
+  <div id='theList' class='grid'>
+    <div class='gray item'>
       <h1>Browse Listings By Band</h1>
-      <a href='bands' title='Browse By Bands'>Let's Go<i class='material-icons'>keyboard_arrow_right</i></a>
+      <a href='bands' title='Browse By Bands' class='btn'>Let's Go<i class='material-icons'>keyboard_arrow_right</i></a>
     </div>
-    <div class='six gray'>
+    <div class='gray item'>
       <h1>Browse Listings By Venue</h1>
-      <a href='venues' title='Browse By Venues'>Let's Go<i class='material-icons'>keyboard_arrow_right</i></a>
+      <a href='venues' title='Browse By Venues' class='btn'>Let's Go<i class='material-icons'>keyboard_arrow_right</i></a>
     </div>
-  </div>
-  <div class='row'>
-    <div class='six gray'>
+    <div class='gray item'>
       <h1>Submit A Listing</h1>
       <p>
-        Get your band or venue in our listings<br />
-        <a href='submit' title='Submit a Listing'>Let's Go<i class='material-icons'>keyboard_arrow_right</i></a>
+        Get your band or venue in our listings<br /><br />
+        <a href='submit' title='Submit a Listing' class='btn'>Let's Go<i class='material-icons'>keyboard_arrow_right</i></a>
       </p>
     </div>
-    <div class='six gray'>
+    <div class='gray item'>
       <h1>Search</h1>
       <p>
         <form action='search.php' method='post'>
@@ -34,11 +33,12 @@
           <div class='input-field'>
             <input type='text' name='term' placeholder='Search...' required/>
           </div>
-          <input type='submit' name='sumbit' value='submit' />
+          <input type='submit' name='sumbit' value='Submit' />
         </form>
       </p>
     </div>
   </div>
+</div>
   <div class='row'>
     <div class='eight shift-two'>
       <h1>What We're About</h1>

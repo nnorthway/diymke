@@ -904,6 +904,8 @@ body {
     min-height: 100vh;
     padding: 3.125%;
     width: 100%; }
+    body main #cta-group .row * {
+      height: 100%; }
     body main p,
     body main h1, body main h2, body main h3, body main h4, body main h5, body main h6,
     body main blockquote,
@@ -1013,6 +1015,13 @@ body {
 #item-group {
   width: 90%;
   margin: 0 auto; }
+  @media screen and (max-width: 600px) {
+    #item-group.cta-group #theList.grid {
+      -webkit-flex-flow: column nowrap;
+      -moz-flex-flow: column nowrap;
+      flex-flow: column nowrap; }
+      #item-group.cta-group #theList.grid .item {
+        width: 100%; } }
   #item-group .header {
     display: flex;
     flex-flow: row nowrap;

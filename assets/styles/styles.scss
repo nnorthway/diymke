@@ -173,6 +173,13 @@ body {
     }
   }
   main {
+    #cta-group {
+      .row {
+        * {
+          height: 100%;
+        }
+      }
+    }
     p,
     h1, h2, h3, h4, h5, h6,
     blockquote,
@@ -281,6 +288,18 @@ body {
   margin-bottom: -2px;
 }
 #item-group {
+  &.cta-group {
+    @include media(max-width 600px) {
+      #theList {
+        &.grid {
+          @include flex-flow(column nowrap);
+          .item {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
   width: 90%;
   margin: 0 auto;
   .header {
