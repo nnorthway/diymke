@@ -43,10 +43,20 @@ $res = search($term, $table);
     </div>
     <?php
   }
+  ?>
+  <div id='item-group'>
+    <div class='header'>
+      <h3>Results</h3>
+      <div class='btn-group'>
+        <button id='view-grid'><i class='material-icons'>grid_on</i></button>
+        <button id='view-list'><i class='material-icons'>view_list</i></button>
+      </div>
+    </div>
+    <div id='theList' class='grid'>
+      <?php
   while ($row = $res->fetch_assoc()) {
     ?>
-    <div class='row'>
-      <div class='eight shift-two gray'>
+      <div class='gray item'>
         <?php if ($table == 'bands') {?>
           <h2><a href='band.php?id=<?php echo htmlspecialchars_decode($row['id']); ?>' title='View Band'><?php echo htmlspecialchars_decode($row['name']); ?></a></h2>
         <?php } else {
@@ -55,23 +65,22 @@ $res = search($term, $table);
           <?php
         }
         ?>
-        <small>
+        <p><small>
           <?php echo $row['location']; ?> |
           <a href='mailto:<?php echo htmlspecialchars_decode($row["email"]); ?>'><?php echo htmlspecialchars_decode($row["email"]); ?></a> |
-          <?php if ($row["music_link"] != null || $row["music_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["music_link"]); ?>' target='_blank'>Music Link</a>  <?php echo "| "; } ?>
-          <?php if ($row["facebook_link"] != null || $row["facebook_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["facebook_link"]); ?>' target='_blank'>Facebook Link</a>  <?php echo "| ";} ?>
-          <?php if ($row["website_link"] != null || $row["website_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["website_link"]); ?>' target='_blank'>Website Link</a><?php } ?>
-        </small>
-        <p class='lead'>
-          <?php echo htmlspecialchars_decode($row['description']); ?>
-        </p>
-        <ul>
-          <li>Genres: <?php echo htmlspecialchars_decode($row['genres']); ?></li>
-          <li>Band Since: <?php echo htmlspecialchars_decode($row['year_established']); ?></li>
-          <li>Last Updated: <?php echo date('D, F d Y', strtotime(htmlspecialchars_decode($row['last_update']))); ?></li>
-        </ul>
+          <?php if ($row["music_link"] != null || $row["music_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["music_link"]); ?>' target='_blank'>Music</a>  <?php echo "| "; } ?>
+          <?php if ($row["facebook_link"] != null || $row["facebook_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["facebook_link"]); ?>' target='_blank'>Facebook</a>  <?php echo "| ";} ?>
+          <?php if ($row["website_link"] != null || $row["website_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["website_link"]); ?>' target='_blank'>Website</a><?php } ?>
+        </small></p>
+        <?php if ($table == 'bands') {?>
+          <a href='band.php?id=<?php echo htmlspecialchars_decode($row['id']); ?>' title='View Band' class='btn'>Read More<i class='material-icons'>arrow_right</i></a>
+        <?php } else {
+          ?>
+          <a href='venue.php?id=<?php echo htmlspecialchars_decode($row['id']); ?>' title='View Venue' class='btn'>Read More<i class='material-icons'>arrow_right</i></a>
+          <?php
+        }
+        ?>
       </div>
-    </div>
     <?php
   }?>
     </div>

@@ -58,6 +58,27 @@ a {color: inherit; text-decoration: none;&:hover {text-decoration: underline; cu
   }
 }
 .text-right {text-align: right;}
+.btn,
+button,
+input[type='submit'] {
+  border: 1px solid #292929;
+  border-bottom-width: 2px;
+  padding: 8px;
+  border-radius: 4px;
+  background: transparent;
+  outline: none;
+  -webkit-appearance: none;
+  &:hover {
+    cursor: pointer;
+    color: lighten(#292929, 15%);
+    border-color: lighten(#292929, 15%);
+    border-bottom-width: 1px;
+    position: relative;
+    top: 1px;
+    outline: none;
+    -webkit-appearance: none;
+  }
+}
 
 body {
   @include display(flex);
@@ -251,5 +272,73 @@ body {
     color: $white;
     padding: $padding;
     width: 100%;
+  }
+}
+
+//grid-list view
+.material-icons {
+  vertical-align: bottom;
+  margin-bottom: -2px;
+}
+#item-group {
+  width: 90%;
+  margin: 0 auto;
+  .header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #efefef;
+    .btn-group {
+      background: #efefef;
+      button {
+        background: transparent;
+        border: none;
+        outline: none;
+        transition: all .5s ease;
+        &:hover {
+          cursor: pointer;
+        }
+        &.active {
+          background: #e0e0e0;
+          transition: all .5s ease;
+        }
+      }
+    }
+  }
+  #theList {
+    @include display(flex);
+    @include transition(all .3s ease);
+    &.list {
+      @include flex-flow(column nowrap);
+      @include justify-content(center);
+      @include align-items(center);
+      @include align-content(center);
+      .item {
+        margin-bottom: 10px;
+        width: 50%;
+        padding: 5%;
+        padding-bottom: calc(5% + 10px);
+        @include transition(all .5s ease);
+        @include media(max-width 600px) {
+          width: 100%;
+          padding: 2.5%;
+          padding-bottom: calc(2.5% + 10%);
+        }
+      }
+    }
+    &.grid {
+      @include flex-flow(row wrap);
+      @include justify-content(space-around);
+      @include align-items(stretch);
+      @include align-content(stretch);
+      .item {
+        width: 40%;
+        padding: 5%;
+        padding-bottom: calc(5% + 10px);
+        margin-bottom: 10px;
+        @include transition(all .5s ease);
+      }
+    }
   }
 }
