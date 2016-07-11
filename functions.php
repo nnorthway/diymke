@@ -1,8 +1,8 @@
 <?php
 
 function conn() {
-  return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
-  //return new mysqli("localhost", "root", "root", "diymke");
+  //return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
+  return new mysqli("localhost", "root", "root", "diymke");
 }
 
 function dbQuery($q) {
@@ -17,7 +17,7 @@ function dbQuery($q) {
   if ($res) {
     return $res;
   } else {
-    $error = "Failed to submit query: (Error " . $conn->connect_errno . ") " . $conn->connect_error;
+    $error = "Failed to submit query: (Error " . $conn->sqlstate . ") " . $conn->error;
     sendErrorReport($error);
     return false;
   }
@@ -193,6 +193,27 @@ function contact($vals) {
   $headers .= 'To: Nate Northway <nate@natenorthway.com>' . "\r\n";
   $headers .= 'From: <no-reply@diymke.org>' . "\r\n";
   mail($to, $subject, $message, $headers);
+}
+
+function search($term, $table) {
+  $conn = conn();
+
+  $cleanTerm = $conn->real_escape_string($term);
+  $query = "SELECT *
+  FROM `" . $table . "`
+  WHERE
+  `name` LIKE '%" . $cleanTerm . "%' OR
+  `location` LIKE '%" . $cleanTerm . "%' OR
+  `description` LIKE '%" . $cleanTerm . "%' OR
+  `genres` LIKE '%" . $cleanTerm . "%'
+  ORDER BY `name` ASC";
+  $res = dbQuery($query);
+  if (!$res) {
+    unset($res);
+    return false;
+  } else {
+    return $res;
+  }
 }
 
 function sendErrorReport($error) {

@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 function setActiveNavItem() {
   var $pages = [
-    'about', 'bands', 'submit', 'contact', 'index', 'venues'
+    'about', 'bands', 'submit', 'contact', 'index', 'venues', 'search'
   ];
 
   var $nav = $("#nav");
@@ -47,7 +47,8 @@ function setActiveNavItem() {
     $nav.find("a[title='Submit']"),
     $nav.find("a[title='Contact']"),
     $nav.find("a[title='Home']"),
-    $nav.find("a[title='Venues']")
+    $nav.find("a[title='Venues']"),
+    $nav.find("a[title='Search']")
   ];
 
   for (var $i = 0; $i <= $pages.length; $i++) {

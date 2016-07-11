@@ -92,12 +92,13 @@
         <i class='material-icons'>menu</i>
       </button>
       <nav id='nav'>
+        <a href='index' title='Home'>Home</a>
         <a href='about' title='About'>About</a>
-        <a href='submit' title='Submit'>Submit</a>
         <a href='bands' title='Bands'>Bands</a>
         <a href='venues' title='Venues'>Venues</a>
+        <a href='submit' title='Submit'>Submit</a>
+        <a href='search' title='Search'>Search</a>
         <a href='contact' title='Contact'>Contact</a>
-        <a href='index' title='Home'>Home</a>
       </nav>
     </header>
     <main>

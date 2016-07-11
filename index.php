@@ -18,10 +18,24 @@
       </p>
     </div>
     <div class='six gray'>
-      <h1>Ask A Question</h1>
+      <h1>Search</h1>
       <p>
-        Do you need a listing edited or removed?<br />
-        <a href='contact' title='Ask A Question'>Let's Go<i class='material-icons'>keyboard_arrow_right</i></a>
+        <form action='search.php' method='post'>
+          <div class='input-field'>
+            <div class='radio-group'>
+              <input type='radio' name='table' value='bands' required/>
+              <p>Bands</p>
+            </div>
+            <div class='radio-group'>
+              <input type='radio' name='table' value='venues' required/>
+              <p>Venues</p>
+            </div>
+          </div>
+          <div class='input-field'>
+            <input type='text' name='term' placeholder='Search...' required/>
+          </div>
+          <input type='submit' name='sumbit' value='submit' />
+        </form>
       </p>
     </div>
   </div>
