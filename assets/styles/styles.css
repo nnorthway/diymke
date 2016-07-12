@@ -1030,6 +1030,9 @@ body {
     border-bottom: 1px solid #efefef; }
     #item-group .header .btn-group {
       background: #efefef; }
+      @media screen and (max-width: 600px) {
+        #item-group .header .btn-group {
+          display: none; } }
       #item-group .header .btn-group button {
         background: transparent;
         border: none;
@@ -1128,5 +1131,10 @@ body {
         -webkit-transition: all 0.5s ease;
         -moz-transition: all 0.5s ease;
         transition: all 0.5s ease; }
+        @media screen and (max-width: 600px) {
+          #item-group #theList.grid .item {
+            width: 100%;
+            padding: 2.5%;
+            padding-bottom: calc(2.5% + 10px); } }
 
 /*# sourceMappingURL=styles.css.map */

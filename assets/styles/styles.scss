@@ -310,6 +310,9 @@ body {
     border-bottom: 1px solid #efefef;
     .btn-group {
       background: #efefef;
+      @include media(max-width 600px) {
+        display: none;
+      }
       button {
         background: transparent;
         border: none;
@@ -361,6 +364,11 @@ body {
         padding-bottom: calc(5% + 10px);
         margin-bottom: 10px;
         @include transition(all .5s ease);
+        @include media(max-width 600px) {
+          width: 100%;
+          padding: 2.5%;
+          padding-bottom: calc(2.5% + 10px);
+        }
       }
     }
   }
