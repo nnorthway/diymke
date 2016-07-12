@@ -1,7 +1,7 @@
 <?php
 function conn() {
-  //return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
-  return new mysqli('localhost','root','root','diymke');
+  return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
+  //return new mysqli('localhost','root','root','diymke');
 }
 
 function checkConn($conn) {
@@ -46,9 +46,9 @@ SQL;
     $match = password_verify($pass, $hash);
     $id = $row['id'];
   }
-  if ($match != true) {
-    sendErrorReport("Failed Log In Attempt.");
+  if (!$match) {
     return false;
+    exit;
   }
   $newQuery = "UPDATE `users` SET `login_ip` = '" . $_SERVER['REMOTE_ADDR'] . "' WHERE `id` = " . $id . "";
   $newRes = $conn->query($newQuery);
