@@ -1,8 +1,8 @@
 <?php
 
 function conn() {
-  //return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
-  return new mysqli("localhost", "root", "root", "diymke");
+  return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
+  //return new mysqli("localhost", "root", "root", "diymke");
 }
 
 function dbQuery($q) {
@@ -83,6 +83,14 @@ function getVenue($id) {
   }
 }
 
+function prependHTTP($string) {
+  if (strpos($string, "http://") == false) {
+    return "http://" . $string;
+  } else {
+    return $string;
+  }
+}
+
 function newBand($data) {
   $conn = conn();
 
@@ -91,6 +99,8 @@ function newBand($data) {
       $val = null;
     }
   }
+
+
 
   $theQuery = "INSERT INTO `bands`(
     `name`,
@@ -107,9 +117,9 @@ function newBand($data) {
     '" . $conn->real_escape_string($data['name']) . "',
     '" . $conn->real_escape_string($data['location']) . "',
     '" . $conn->real_escape_string($data['email']) . "',
-    '" . $conn->real_escape_string($data['music_link']) . "',
-    '" . $conn->real_escape_string($data['website_link']) . "',
-    '" . $conn->real_escape_string($data['facebook_link']) . "',
+    '" . $conn->real_escape_string(prependHTTP($data['music_link'])) . "',
+    '" . $conn->real_escape_string(prependHTTP($data['website_link'])) . "',
+    '" . $conn->real_escape_string(prependHTTP($data['facebook_link'])) . "',
     '" . $conn->real_escape_string($data['description']) . "',
     '" . $conn->real_escape_string($data['year_established']) . "',
     '" . $conn->real_escape_string($data['genres']) . "',
@@ -140,9 +150,9 @@ function newVenue($data) {
     '" . $conn->real_escape_string($data['name']) . "',
     '" . $conn->real_escape_string($data['location']) . "',
     '" . $conn->real_escape_string($data['email']) . "',
-    '" . $conn->real_escape_string($data['website_link']) . "',
+    '" . $conn->real_escape_string(prependHTTP($data['website_link'])) . "',
     '" . $conn->real_escape_string($data['description']) . "',
-    '" . $conn->real_escape_string($data['facebook_link']) . "',
+    '" . $conn->real_escape_string(prependHTTP($data['facebook_link'])) . "',
     '" . $conn->real_escape_string($data['year_established']) . "',
     '" . $conn->real_escape_string($data['genres']) . "',
     '" . time() . "')";
