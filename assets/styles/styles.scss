@@ -153,9 +153,9 @@ body {
       nav {
         background: white;
         position: absolute;
-        top: -100%;
+        top: -200%;
         left: 0;
-        @include transition(all 1s ease);
+        @include transition(all .5s ease);
         width: 100%;
         @include display(flex);
         @include flex-direction(column);
@@ -315,8 +315,12 @@ body {
         border: none;
         outline: none;
         transition: all .5s ease;
+        border-radius: 0;
         &:hover {
           cursor: pointer;
+          position: relative;
+          top: 0;
+          color: lighten(#292929, 20%);
         }
         &.active {
           background: #e0e0e0;
