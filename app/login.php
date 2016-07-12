@@ -34,7 +34,7 @@ include 'inc/head.php';
           <input type='password' name='password' value='' required />
         </div>
         <input type='submit' name='submit' value='submit' />
-        <a href='reset.php?email=<?php echo $email; ?>'>Forgot Password</a>
+        <a href='reset.php?email=<?php echo $email; ?>&time=<?php echo time(); ?>'>Forgot Password</a>
       </form>
     </div>
   </main>

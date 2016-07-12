@@ -22,7 +22,7 @@ include 'inc/head.php';
       <div class='eight shift-two gray'>
         <?php if (!isset($_GET['confirm'])) {?>
         <h3>Are you sure you want to delete this Venue?</h3>
-        <a href='history'>No</a><br />
+        <a href='venues'>No</a><br />
         <a href='delete-venue.php?confirm=true&id=<?php echo $_GET['id']; ?>'>Yes</a>
         <?php } else {
           $result = deleteVenue($_GET['id']);
