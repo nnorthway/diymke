@@ -1,11 +1,11 @@
 #
 # error handling
 #
-ErrorDocument 404 error-msg.php
-ErrorDocument 500 error-msg.php
-ErrorDocument 400 error-msg.php
-ErrorDocument 401 error-msg.php
-ErrorDocument 403 error-msg.php
+ErrorDocument 404 http://beta.diymke.org/error-msg.php
+ErrorDocument 500 http://beta.diymke.org/error-msg.php
+ErrorDocument 400 http://beta.diymke.org/error-msg.php
+ErrorDocument 401 http://beta.diymke.org/error-msg.php
+ErrorDocument 403 http://beta.diymke.org/error-msg.php
 #
 # end error handling
 #
