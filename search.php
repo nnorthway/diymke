@@ -5,9 +5,7 @@ include 'functions.php';
 $table = $_POST['table'];
 $term = $_POST['term'];
 
-if (isset($_POST['submit'])) {
-  $res = search($term, $table);
-}
+$res = search($term, $table);
 ?>
 <div class='row'>
   <div class='twelve gray'>
@@ -31,20 +29,6 @@ if (isset($_POST['submit'])) {
   </div>
 </div>
 <div class='row'>
-  <?php
-  if (!$res || $res->num_rows === 0) {
-    ?>
-    <div class='row'>
-      <div class='eight shift-two gray'>
-        <h2>No Results</h2>
-        <p>
-          Try another search
-        </p>
-      </div>
-    </div>
-    <?php
-  }
-  ?>
   <div id='item-group'>
     <div class='header'>
       <h3>Results</h3>
@@ -55,6 +39,7 @@ if (isset($_POST['submit'])) {
     </div>
     <div id='theList' class='grid'>
       <?php
+      if (isset($_POST['term'])) {
   while ($row = $res->fetch_assoc()) {
     ?>
       <div class='gray item'>
@@ -82,6 +67,12 @@ if (isset($_POST['submit'])) {
         }
         ?>
       </div>
+    <?php
+  }} else {
+    ?>
+    <div class='gray item'>
+      <h3>No Search Term Entered</h3>
+    </div>
     <?php
   }?>
     </div>
