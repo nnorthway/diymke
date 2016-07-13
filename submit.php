@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'inc/header.php'; ?>
   <div class='row'>
     <div class='twelve gray'>
       <h1>Submit a Listing</h1>
@@ -36,7 +36,7 @@
   </div>
   <div class='row'>
     <div class='eight shift-two' id='form_area'>
-      <form id='band_form' action='band-handler.php' method='post' enctype='multipart/form-data'>
+      <form id='band_form' action='handlers/band-handler.php' method='post' enctype='multipart/form-data'>
         <div class='input-field'>
           <label for='bandname'>Your Band's Name</label>
           <input type='text' name='bandname' required placeholder='Bandname' />
@@ -87,7 +87,7 @@
         </div>
       </form>
 
-      <form id='venue_form' action='venue-handler.php' method='post' enctype='multipart/form-data'>
+      <form id='venue_form' action='handlers/venue-handler.php' method='post' enctype='multipart/form-data'>
         <div class='input-field'>
           <label for='venue_name'>Venue Name</label>
           <input type='text' name='venue_name' required placeholder='Venue XYZ' />
@@ -139,4 +139,4 @@
     </div>
   </div>
 </main>
-<?php include 'footer.php'; ?>
+<?php include 'inc/footer.php'; ?>

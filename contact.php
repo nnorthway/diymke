@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'inc/header.php'; ?>
   <div class='row'>
     <div class='twelve gray'>
       <h1>Get In Touch</h1>
@@ -19,7 +19,7 @@
       </p>
     </div>
     <div class='eight shift-two'>
-      <form action='contact-handler.php' method='post' enctype='multipart/form-data'>
+      <form action='/handlers/contact-handler.php' method='post' enctype='multipart/form-data'>
         <div class='input-field'>
           <label for='name'>Your Name</label>
           <input type='text' name='name' required placeholder='Alex Smith' />
@@ -57,4 +57,4 @@
     </div>
   </div>
 </main>
-<?php include 'footer.php'; ?>
+<?php include 'inc/footer.php'; ?>

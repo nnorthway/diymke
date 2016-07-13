@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include 'inc/header.php';
 include 'functions.php';
 
 $table = $_POST['table'];
@@ -86,5 +86,5 @@ $res = search($term, $table);
     </div>
   </main>
 <?php
-  include 'footer.php';
+  include 'inc/footer.php';
   ?>

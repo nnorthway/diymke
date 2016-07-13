@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'inc/header.php'; ?>
 <?php
   include 'functions.php';
   $result = getBand($_GET['id']);
@@ -42,4 +42,4 @@
   }
 ?>
 </main>
-<?php include 'footer.php'; ?>
+<?php include 'inc/footer.php'; ?>

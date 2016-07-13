@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'inc/header.php'; ?>
 <div id='item-group' class='cta-group'>
   <div id='theList' class='grid'>
     <div class='gray item'>
@@ -84,4 +84,4 @@
       </p>
   </div>
 </main>
-<?php include 'footer.php'; ?>
+<?php include 'inc/footer.php'; ?>

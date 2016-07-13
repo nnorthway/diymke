@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'inc/header.php'; ?>
   <div class='row'>
     <div class='twelve gray'>
       <h1>About DIY:MKE</h1>
@@ -139,4 +139,4 @@
     </div>
   </div>
 </main>
-<?php include 'footer.php'; ?>
+<?php include 'inc/footer.php'; ?>

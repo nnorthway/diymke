@@ -11,7 +11,8 @@ $arr = array(
   'description' => htmlspecialchars($_POST['description']),
   'facebook_link' => htmlspecialchars($_POST['facebook']),
   'year_established' => htmlspecialchars($_POST['est']),
-  'genres' => htmlspecialchars($_POST['genres'])
+  'genres' => htmlspecialchars($_POST['genres']),
+  'last_update' => time()
 );
 
 $res = newVenue($arr);

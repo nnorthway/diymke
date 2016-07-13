@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'inc/header.php'; ?>
 <div id='item-group'>
   <div class='header'>
     <h3>Bands</h3>
@@ -45,4 +45,4 @@
 </div>
 </div>
 </main>
-<?php include 'footer.php'; ?>
+<?php include 'inc/footer.php'; ?>

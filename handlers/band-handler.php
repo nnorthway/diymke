@@ -10,7 +10,8 @@ $arr = array(
   'facebook_link' => htmlspecialchars($_POST['facebook']),
   'description' => htmlspecialchars($_POST['description']),
   'year_established' => htmlspecialchars($_POST['est']),
-  'genres' => htmlspecialchars($_POST['genres'])
+  'genres' => htmlspecialchars($_POST['genres']),
+  'last_update' => time()
 );
 
 $res = newBand($arr);

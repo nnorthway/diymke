@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'inc/header.php'; ?>
 <?php
   $status = $_GET['id'];
   $codes = array(
@@ -19,5 +19,5 @@ echo "
 </div>
 </div>
 </main>";
-include 'footer.php';
+include 'inc/footer.php';
 ?>
