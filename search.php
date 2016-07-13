@@ -5,8 +5,9 @@ include 'functions.php';
 $table = $_POST['table'];
 $term = $_POST['term'];
 
-$res = search($term, $table);
-
+if (isset($_POST['submit'])) {
+  $res = search($term, $table);
+}
 ?>
 <div class='row'>
   <div class='twelve gray'>
