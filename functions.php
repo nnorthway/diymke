@@ -84,7 +84,7 @@ function getVenue($id) {
 }
 
 function prependHTTP($string) {
-  if (strpos($string, "http://") == false) {
+  if (strpos($string, "http://") === false || strpos($string, "https://") === false) {
     return "http://" . $string;
   } else {
     return $string;
@@ -128,8 +128,29 @@ function newBand($data) {
   $status = dbQuery($theQuery);
 
   if (!$status) {
-    return $status;
+    return false;
   } else {
+    //insert the genres
+    $genres = array();
+
+    //collect the genres, store in local var
+    $genres = explode(", ", $conn->real_escape_string($data['genres']));
+
+    //get the inserted band's id
+    $getQuery = "SELECT * FROM `bands` ORDER BY `id` DESC LIMIT 1";
+    $result = dbQuery($getQuery);
+    $band = $result->fetch_row();
+    $bandID = $band[0];
+
+    //for each genre
+    foreach ($genres as $genre) {
+      $insertQuery = "INSERT INTO `band_genres` (`bandID`, `genre`) VALUES ('" . $bandID . "', '" . $genre . "')";
+      $insertResult = dbQuery($insertQuery);
+      if (!$insertResult) {
+        return $insertResult;
+      }
+    }
+
     return true;
   }
 }
@@ -162,6 +183,28 @@ function newVenue($data) {
   if ($status === FALSE) {
     return $status;
   } else {
+    //insert the genres
+    $genres = array();
+
+    //collect the genres, store in local var
+    $genres = explode(", ", $conn->real_escape_string($data['genres']));
+
+    //get the inserted band's id
+    $getQuery = "SELECT * FROM `venues` ORDER BY `id` DESC LIMIT 1";
+    $result = dbQuery($getQuery);
+    $venue = $result->fetch_row();
+    $venueID = $venue[0];
+
+    //for each genre
+    foreach ($genres as $genre) {
+      $insertQuery = "INSERT INTO `venue_genres` (`venueID`, `genre`) VALUES ('" . $venueID . "', '" . $genre . "')";
+      $insertResult = dbQuery($insertQuery);
+      if (!$insertResult) {
+        return $insertResult;
+      }
+    }
+
+
     return true;
   }
 }

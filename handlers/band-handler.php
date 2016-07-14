@@ -14,6 +14,7 @@ $arr = array(
   'last_update' => time()
 );
 
+
 $res = newBand($arr);
 
 if ($res === TRUE) {
@@ -21,5 +22,6 @@ if ($res === TRUE) {
   exit;
 } else {
   header('Location: ../submit.php#error');
+  exit;
 }
 ?>
