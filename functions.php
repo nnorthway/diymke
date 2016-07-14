@@ -1,8 +1,8 @@
 <?php
 
 function conn() {
-  return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
-  //return new mysqli("localhost", "root", "root", "diymke");
+  //return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
+  return new mysqli("localhost", "root", "root", "diymke");
 }
 
 function dbQuery($q) {
@@ -36,6 +36,50 @@ function dbInsert($query) {
       sendErrorReport($error);
       return false;
     }
+  }
+}
+
+function getBandGenres($bandID) {
+  $query = "SELECT * FROM `band_genres` WHERE `bandID` = '" . $bandID . "'";
+  $res = dbQuery($query);
+  if (!$res) {
+    unset($res);
+    return false;
+  } else {
+    return $res;
+  }
+}
+
+function getVenueGenres($venueID) {
+    $query = "SELECT * FROM `venue_genres` WHERE `venueID` = '" . $venueID . "'";
+    $res = dbQuery($query);
+    if (!$res) {
+      unset($res);
+      return false;
+    } else {
+      return $res;
+    }
+}
+
+function getBandsByGenre($genreName) {
+    $query = "SELECT * FROM `band_genres` JOIN `bands` ON `band_genres`.`bandID` = `bands`.`id` WHERE `band_genres`.`genre` LIKE '%" . $genreName . "%'";
+    $res = dbQuery($query);
+    if (!$res) {
+      unset($res);
+      return false;
+    } else {
+      return $res;
+    }
+}
+
+function getVenuesByGenre($genreName) {
+  $query = "SELECT * FROM `venue_genres` JOIN `venues` ON `venue_genres`.`venueID` = `venues`.`id` WHERE `venue_genres`.`genre` LIKE '%" . $genreName . "%'";
+  $res = dbQuery($query);
+  if (!$res) {
+    unset($res);
+    return false;
+  } else {
+    return $res;
   }
 }
 

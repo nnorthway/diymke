@@ -4,8 +4,17 @@ include 'functions.php';
 
 $table = $_POST['table'];
 $term = $_POST['term'];
+$fields = $_POST['genre'];
 
-$res = search($term, $table);
+if ($fields) {
+  if ($table === 'bands') {
+    $res = getBandsByGenre($term);
+  } else {
+    $res = getVenuesByGenre($term);
+  }
+} else {
+  $res = search($term, $table);
+}
 ?>
 <div class='row'>
   <div class='twelve gray'>
@@ -17,8 +26,12 @@ $res = search($term, $table);
           <p>Bands</p>
         </div>
         <div class='radio-group'>
-          <input type='radio' name='table' value='venues' required/>
+          <input type='radio' name='table' value='venues' required />
           <p>Venues</p>
+        </div>
+        <div class='radio-group'>
+          <input type='checkbox' name='genre' value='true' />
+          <p>Search By Genre Only</p>
         </div>
       </div>
       <div class='input-field'>
