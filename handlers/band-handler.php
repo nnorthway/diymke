@@ -1,5 +1,5 @@
 <?php
-include 'functions.php';
+include '../functions.php';
 
 $arr = array(
   'name' => htmlspecialchars($_POST['bandname']),
@@ -17,9 +17,9 @@ $arr = array(
 $res = newBand($arr);
 
 if ($res === TRUE) {
-  header('Location: submit.php#thanks');
+  header('Location: ../submit.php#thanks');
   exit;
 } else {
-  header('Location: submit.php#error');
+  header('Location: ../submit.php#error');
 }
 ?>

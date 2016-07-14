@@ -1,5 +1,5 @@
 <?php
-include 'functions.php';
+include '../functions.php';
 
 $address = $_POST['address_l1'] . "\r\n" . $_POST['address_l2'] . "\r\n" . $_POST['city'] . ", Wisconsin";
 
@@ -18,10 +18,10 @@ $arr = array(
 $res = newVenue($arr);
 
 if ($res === TRUE) {
-  header('Location: submit.php#thanks');
+  header('Location: ../submit.php#thanks');
   exit;
 } else {
-  header('Location: submit.php#error');
+  header('Location: ../submit.php#error');
   exit;
 }
 ?>
