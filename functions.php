@@ -11,9 +11,7 @@ function dbQuery($q) {
     $error = "Failed to connect to MySQL: (Error " . $conn->connect_errno . ") " . $conn->connect_error;
     sendErrorReport($error);
   }
-
   $res = $conn->query($q);
-
   if ($res) {
     return $res;
   } else {
@@ -28,7 +26,6 @@ function dbInsert($query) {
   if ($conn->connect_errno) {
     $error = "Failed to connect to MySQL: (Error " . $conn->connect_errno . ") " . $conn->connect_error;
     sendErrorReport($error);
-
     if ($conn->query($query)) {
       return true;
     } else {
@@ -143,9 +140,6 @@ function newBand($data) {
       $val = null;
     }
   }
-
-
-
   $theQuery = "INSERT INTO `bands`(
     `name`,
     `location`,
@@ -168,25 +162,16 @@ function newBand($data) {
     '" . $conn->real_escape_string($data['year_established']) . "',
     '" . $conn->real_escape_string($data['genres']) . "',
     '" . time() . "')";
-
   $status = dbQuery($theQuery);
-
   if (!$status) {
     return false;
   } else {
-    //insert the genres
     $genres = array();
-
-    //collect the genres, store in local var
     $genres = explode(", ", $conn->real_escape_string($data['genres']));
-
-    //get the inserted band's id
     $getQuery = "SELECT * FROM `bands` ORDER BY `id` DESC LIMIT 1";
     $result = dbQuery($getQuery);
     $band = $result->fetch_row();
     $bandID = $band[0];
-
-    //for each genre
     foreach ($genres as $genre) {
       $insertQuery = "INSERT INTO `band_genres` (`bandID`, `genre`) VALUES ('" . $bandID . "', '" . $genre . "')";
       $insertResult = dbQuery($insertQuery);
@@ -194,7 +179,6 @@ function newBand($data) {
         return $insertResult;
       }
     }
-
     return true;
   }
 }
@@ -221,25 +205,16 @@ function newVenue($data) {
     '" . $conn->real_escape_string($data['year_established']) . "',
     '" . $conn->real_escape_string($data['genres']) . "',
     '" . time() . "')";
-
   $status = dbQuery($theQuery);
-
   if ($status === FALSE) {
     return $status;
   } else {
-    //insert the genres
     $genres = array();
-
-    //collect the genres, store in local var
     $genres = explode(", ", $conn->real_escape_string($data['genres']));
-
-    //get the inserted band's id
     $getQuery = "SELECT * FROM `venues` ORDER BY `id` DESC LIMIT 1";
     $result = dbQuery($getQuery);
     $venue = $result->fetch_row();
     $venueID = $venue[0];
-
-    //for each genre
     foreach ($genres as $genre) {
       $insertQuery = "INSERT INTO `venue_genres` (`venueID`, `genre`) VALUES ('" . $venueID . "', '" . $genre . "')";
       $insertResult = dbQuery($insertQuery);
@@ -247,8 +222,6 @@ function newVenue($data) {
         return $insertResult;
       }
     }
-
-
     return true;
   }
 }
@@ -294,19 +267,11 @@ function contact($vals) {
 
 function search($term, $table) {
   $conn = conn();
-
   if (!isset($term) || !isset($table)) {
     return false;
   }
   $cleanTerm = $conn->real_escape_string($term);
-  $query = "SELECT *
-  FROM `" . $table . "`
-  WHERE
-  `name` LIKE '%" . $cleanTerm . "%' OR
-  `location` LIKE '%" . $cleanTerm . "%' OR
-  `description` LIKE '%" . $cleanTerm . "%' OR
-  `genres` LIKE '%" . $cleanTerm . "%'
-  ORDER BY `name` ASC";
+  $query = "SELECT * FROM `" . $table . "` WHERE `name` LIKE '%" . $cleanTerm . "%' OR `location` LIKE '%" . $cleanTerm . "%' OR `description` LIKE '%" . $cleanTerm . "%' OR `genres` LIKE '%" . $cleanTerm . "%' ORDER BY `name` ASC";
   $res = dbQuery($query);
   if (!$res) {
     unset($res);

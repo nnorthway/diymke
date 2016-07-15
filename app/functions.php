@@ -1,7 +1,7 @@
 <?php
 function conn() {
-  //return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
-  return new mysqli('localhost','root','root','diymke');
+  return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
+  //return new mysqli('localhost','root','root','diymke');
 }
 
 function checkConn($conn) {
@@ -232,11 +232,9 @@ function updateVenue($vals) {
   if (!checkConn($conn)) {
     return false;
   }
-
   foreach ($vals as $key => $val) {
     $val = $conn->real_escape_string($val);
   }
-
 $query = "UPDATE `venues`
 SET
   `name` = '" . $conn->real_escape_string($vals['name']) . "',
@@ -249,8 +247,6 @@ SET
   `genres` = '" . $conn->real_escape_string($vals['genres']) . "',
   `last_update` = '" . time() . "'";
   $res = $conn->query($query);
-
-
   if (!checkRes($res, $conn, 'updateVenue')) {
     return false;
   }
@@ -331,7 +327,6 @@ function getUserByEmail($email) {
   if (!checkConn($conn)) {
     return false;
   }
-
 $query = <<<SQL
 SELECT *
 FROM `users`
