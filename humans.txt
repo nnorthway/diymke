@@ -9,6 +9,15 @@ Site: https://www.facebook.com/scott.cary.7
 Twitter: @ScottCaryFromIT
 Location: Milwaukee, WI, USA
 
+Beta Tester: JJ Kaiser
+Location: Milwaukee, WI
+
+Beta Tester: Alex Bischmann
+Location: Milwaukee, WI
+
+Beta Tester: Jason LeGear
+Location: Milwaukee, WI
+
 /*THANKS*/
 http://humanstxt.org
 https://github.com/joshbuchea/HEAD
