@@ -1,8 +1,8 @@
 <?php
 
 function conn() {
-  //return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
-  return new mysqli("localhost", "root", "root", "diymke");
+  return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
+  //return new mysqli("localhost", "root", "root", "diymke");
 }
 
 function dbQuery($q) {
@@ -295,6 +295,9 @@ function contact($vals) {
 function search($term, $table) {
   $conn = conn();
 
+  if (!isset($term) || !isset($table)) {
+    return false;
+  }
   $cleanTerm = $conn->real_escape_string($term);
   $query = "SELECT *
   FROM `" . $table . "`

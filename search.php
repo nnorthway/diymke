@@ -6,15 +6,15 @@ $table = $_POST['table'];
 $term = $_POST['term'];
 $fields = $_POST['genre'];
 
-if ($fields) {
-  if ($table === 'bands') {
-    $res = getBandsByGenre($term);
+  if ($fields) {
+    if ($table === 'bands') {
+      $res = getBandsByGenre($term);
+    } else {
+      $res = getVenuesByGenre($term);
+    }
   } else {
-    $res = getVenuesByGenre($term);
+    $res = search($term, $table);
   }
-} else {
-  $res = search($term, $table);
-}
 ?>
 <div class='row'>
   <div class='twelve gray'>
