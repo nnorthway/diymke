@@ -125,7 +125,11 @@ function getVenue($id) {
 }
 
 function prependHTTP($string) {
-  if (strpos($string, "http://") === false || strpos($string, "https://") === false) {
+
+  $pos = strpos($string, "http://");
+  $pos2 = strpos($string, "https://");
+
+  if ($pos === false && $pos2 === false && $string != null) {
     return "http://" . $string;
   } else {
     return $string;

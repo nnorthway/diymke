@@ -29,10 +29,10 @@
         <div class='gray item'>
           <h2><a href='venue.php?id=<?php echo $row['id']; ?>' title='View Venue'><?php echo htmlspecialchars_decode($row['name']); ?></a></h2>
           <p><small>
-            <?php echo htmlspecialchars_decode($row['location']); ?><br />
+            <?php if ($row['location'] != null && $row['location'] != "") { echo htmlspecialchars_decode($row['location']); } ?><br />
             <a href='mailto:<?php echo htmlspecialchars_decode($row["email"]); ?>'><?php echo htmlspecialchars_decode($row['email']); ?></a> |
-            <?php if ($row["website_link"] != null || $row["website_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["website_link"]); ?>' target='_blank'>Website</a>  <?php echo "| ";} ?>
-            <?php if ($row["facebook_link"] != null || $row["facebook_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["facebook_link"]); ?>' target='_blank'>Facebook</a><?php } ?>
+            <?php if ($row["website_link"] != null && $row["website_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["website_link"]); ?>' target='_blank'>Website</a>  <?php echo "| ";} ?>
+            <?php if ($row["facebook_link"] != null && $row["facebook_link"] != "") {?><a href='<?php echo htmlspecialchars_decode($row["facebook_link"]); ?>' target='_blank'>Facebook</a><?php } ?>
           </small></p>
           <a href='venue.php?id=<?php echo $row['id']; ?>' title='Read More...' class='btn'>Read More<i class='material-icons'>arrow_right</i></a>
         </div>
