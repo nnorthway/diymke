@@ -1,7 +1,7 @@
 <?php
 
 function conn() {
-  return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
+  return new mysqli("dont", "sent", "creds", "onGitHub");
   //return new mysqli("localhost", "root", "root", "diymke");
 }
 
