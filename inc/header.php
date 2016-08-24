@@ -105,6 +105,7 @@
       <nav id='nav'>
         <a href='index' title='Home'>Home</a>
         <a href='about' title='About'>About</a>
+        <a href='news' title='News'>News</a>
         <a href='bands' title='Bands'>Bands</a>
         <a href='venues' title='Venues'>Venues</a>
         <a href='submit' title='Submit'>Submit</a>

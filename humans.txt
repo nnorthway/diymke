@@ -25,7 +25,7 @@ http://bourbon.io
 http://css-tricks.com
 
 /*SITE*/
-Last Update: 2016/06/12
+Last Update: 2016/08/23
 Language: EN-US
 Doctype: HTML5
 Standards: HTML5, CSS3, PHP 7.0, SASS
