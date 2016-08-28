@@ -9,9 +9,41 @@
     </p>
   </div>
   <div class='eight shift-two'>
-    <section>
+    <section id='events_and_docs'>
+      <h2>Events and Docs</h2>
+      <small>Posted on Sunday, August 28th, 2016</small>
+      <p>
+        Today, we're rolling out two new features: Events and Docs.<br />
+        We talked about events in our <a href='#events'>last post</a>. In this post,
+        I'm going to talk more about docs and the planned upcoming features.<br />
+        Our documentation has always been lacking. There have always been some indicators,
+        but never any solid documentation. I've taken the last week or so to write
+        up a strong bit of end-user documentation and we're rolling it out today
+        with the events feature. The documentation answers all your questions and
+        provides ways to ask for more features. Woo!<br />
+        Here is the full list of today's update:<br />
+        <ul>
+          <li>Events: submitting, group &amp; individual event view</li>
+          <li>Docs</li>
+          <li>Better Contact Form Subject Options</li>
+          <li>Some faster functions (like database querying for listings)</li>
+        </ul>
+        <br />
+        And as far as future updates are concerned, a few are already in the works:
+        <ul>
+          <li>Better frameworking for a faster app</li>
+          <li>Possible automatic Bandcamp integration</li>
+          <li>Event Search</li>
+          <li>Better Search Interface/Results</li>
+        </ul><br />
+        That's all the news I have for now! Until next time. 
+      </p>
+    </section>
+  </div>
+  <div class='eight shift-two'>
+    <section id='events'>
       <h2>Calendar</h2>
-      <small>Posted on Tuesday, August 23rd</small>
+      <small>Posted on Tuesday, August 23rd, 2016</small>
       <p>
         Next feature planned is a calendar. This will be similar to the calendar
         at <a href='http://notdiychi.com' target='_blank'>not diy chi</a> in the
@@ -55,7 +87,7 @@
         information is the Event &amp; Venue names, the date, type of event, and
         host email. The host email will be kept private.<br /><br />
         <strong>I have a suggestion for this feature. What do I do with it?</strong><br />
-        Send an email with your suggestion to <a href='mailto:nate@natenorthway.com'>nate@natenorthway.com</a>.
+        Send an email with your suggestion to <a href='mailto:mods@diymke.org'>mods@diymke.org</a>.
       </p>
     </section>
   </div>

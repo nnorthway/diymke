@@ -67,12 +67,10 @@
             <li>Domain Name Registration ($12-$15/year)</li>
             <li>'WhoIs' Protection ($8/year)</li>
           </ul>
-          That's a minimum of $164/year that I have to pay. Not to mention that
-          if we start getting more than 1,000 visits/month, I have to pay the
-          frameworks and APIs I use to continue using them, which could be up to
-          $50/month(!). So, to keep it cheap, we have to keep it small. Until funding
-          is established, this is going to stay small. If you want this to grow,
-          please consider <a href='http://gofund.me/diymke' title='GoFundMe' target='_blank'>donating</a>.<br /><br />
+          That's a minimum of $164/year that I have to pay. So, to keep it
+          cheap, we have to keep it small. Until funding is established, this
+          is going to stay small. If you want this to grow, please consider
+          <a href='http://gofund.me/diymke' title='GoFundMe' target='_blank'>donating</a>.<br /><br />
           <strong>Research and Testing</strong>. When I first rolled out DIY:MKE
           as a subdomain of Permanent Scowl Records, I didn't really know what I was
           doing. That was my first web app and I didn't know how to do user research,
@@ -124,7 +122,7 @@
           <strong>IF you'd like to work on this with me</strong>, I'd really
           appreciate the help. This site is based on PHP and MySQL. If you're privy
           to those things (or front-end technologies) and would like to donate
-          some time, <a href='mailto:nate@natenorthway.com'>drop me a message at nate@natenorthway.com</a>.
+          some time, <a href='mailto:mods@diymke.org'>drop the moderators a message at mods@diymke.org</a>.
         </p>
       </section>
       <section>

@@ -20,4 +20,4 @@ notes are also appreciated but not necessary in some instances.
 I want to keep a rigorous development cycle, with at least 1 update a week and a version change at least once a month. 
 
 ### Beta Testers
-If you'd like to be on the beta team, shoot me a message at nate@natenorthway.com
+If you'd like to be on the beta team, shoot me a message at mods@diymke.org

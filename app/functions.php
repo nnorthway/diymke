@@ -1,7 +1,11 @@
 <?php
 function conn() {
-  return new mysqli("dont", "sent", "creds", "onGitHub");
+  return new mysqli("localhost", "diymkeor_diymke", "utrhf5cs!", "diymkeor_diymke");
   //return new mysqli('localhost','root','root','diymke');
+}
+
+function isLocalInstall() {
+  return false;
 }
 
 function checkConn($conn) {
@@ -279,6 +283,226 @@ function deleteVenue($id) {
   return true;
 }
 
+function getUnmoderatedEvents() {
+  $conn = conn();
+  if (!checkConn($conn)) {
+    return false;
+  }
+$query = <<<SQL
+SELECT *
+FROM `events`
+WHERE `is_moderated` = FALSE
+ORDER BY `id`
+DESC
+SQL;
+  $res = $conn->query($query);
+  if (!checkRes($res, $conn, 'getUnapprovedEvents')) {
+    return false;
+  }
+  return $res;
+}
+
+function getUnapprovedEvents() {
+  $conn = conn();
+  if (!checkConn($conn)) {
+    return false;
+  }
+$query = <<<SQL
+SELECT *
+FROM `events`
+WHERE `is_verified` = FALSE
+ORDER BY `id`
+DESC
+SQL;
+  $res = $conn->query($query);
+  if (!checkRes($res, $conn, 'getUnapprovedEvents')) {
+    return false;
+  }
+  return $res;
+}
+
+function getEvent($id) {
+  $conn = conn();
+  if (!checkConn($conn)) {
+    return false;
+  }
+$query = <<<SQL
+SELECT *
+FROM `events`
+WHERE `id` = $id
+SQL;
+  $res = $conn->query($query);
+  if (!checkRes($res, $conn, 'getEvent')) {
+    return false;
+  }
+  return $res->fetch_assoc();
+}
+
+function getEvents() {
+  $conn = conn();
+  if (!checkConn($conn)) {
+    return false;
+  }
+$query = <<<SQL
+SELECT *
+FROM `events`
+SQL;
+  $res = $conn->query($query);
+  if (!checkRes($res, $conn, 'getEvents')) {
+    return false;
+  }
+  return $res;
+}
+
+function approveEvent($id) {
+  $conn = conn();
+  if (!checkConn($conn)) {
+    return false;
+  }
+$query = "UPDATE `events`
+SET
+  `is_verified` = 1,
+  `is_moderated` = 1
+WHERE `id` = '" . $id . "'";
+  $res = $conn->query($query);
+  if (!checkRes($res, $conn, 'approveEvent')) {
+    return false;
+  }
+  $row = getEvent($id);
+  $sendTo = $row['host_email'];
+  $from = "no-reply@diymke.org";
+  $subject = "DIY:MKE: Your Event Was approved";
+  $message = "
+<html>
+  <head>
+    <title>DIY:MKE: Your event was approved</title>
+  </head>
+  <body>
+    <p>
+      Hi, " . $row['host_email'] . ", we're writing you to inform you
+      that your event, " . $row['name'] . ", has been approved and can
+      be found at <a href='http://diymke.org/event.php?id" . $row['id'] . "'>this link</a>.
+    </p>
+    <hr />
+    <small>
+      This email was sent automatically. Please do not respond directly to this email. We will no longer contact you without
+      prior consent. We will not advertise to you or sell or share your email address to
+      other businesses.
+    </small>
+  </body>
+</html>
+  ";
+  $headers = 'MIME-Version: 1.0' . "\r\n";
+  $headers .= 'Content-type: text/html; chaset=iso-8859-1' . "\r\n";
+  $headers .= 'To: Host <' . $sendTo . '>' . "\r\n";
+  $headers .= 'From: <no-reply@diymke.org>' . "\r\n";
+  mail($sendTo, $subject, $message, $headers);
+  return true;
+}
+
+function denyEvent($id, $denyMessage) {
+  $conn = conn();
+  if (!checkConn($conn)) {
+    return false;
+  }
+$query = "UPDATE `events`
+SET `is_verified` = 0,
+    `is_moderated` = 1
+WHERE `id` = '" . $id . "'";
+  $res = $conn->query($query);
+  if (!checkRes($res, $conn, 'denyEvent')) {
+    return false;
+  }
+  $row = getEvent($id);
+  $sendTo = $row['host_email'];
+  $from = "no-reply@diymke.org";
+  $subject = "DIY:MKE: Your Event Was Denied";
+  $message = "
+  <html>
+  <head>
+    <title>DIY:MKE: Your Event Was Denied</title>
+  </head>
+  <body>
+    <p>
+      Hi, " . $row['host_email'] . ", we're writing you to inform you
+      that your event, " . $row['name'] . ", has been denied for the following
+      reason: <br />" . $denyMessage . "<br />
+      If you would like to challenge this or offer revised information, you can
+      do so at http://diymke.org/contact. Please provide the following information
+      at the top of your message and select the subject 'I'd like to  my event':<br />
+      Event ID: " . $id . "<br />
+      Reason For Denial: " . $denyMessage . "
+    </p>
+    <hr />
+    <small>
+      This email was sent automatically. Please do not respond directly to this email. We will no longer contact you without
+      prior consent. We will not advertise to you or sell or share your email address to
+      other businesses.
+    </small>
+  </body>
+  </html>
+  ";
+  $headers = 'MIME-Version: 1.0' . "\r\n";
+  $headers .= 'Content-type: text/html; chaset=iso-8859-1' . "\r\n";
+  $headers .= 'To: Host <' . $sendTo . '>' . "\r\n";
+  $headers .= 'From: <no-reply@diymke.org>' . "\r\n";
+  mail($sendTo, $subject, $message, $headers);
+  return true;
+}
+
+function deleteEvent($id) {
+  $stmt = "DELETE FROM `events` WHERE `id` = $id";
+  $conn = conn();
+  $res = $conn->query($stmt);
+  if (!$res) {
+    unset($res);
+    return false;
+  }
+  return true;
+}
+
+function clearEvents() {
+  $res = getEvents();
+  while ($row = $res->fetch_assoc()) {
+    if ($row['date'] < date('Y-m-d')) {
+      if (!deleteEvent($row['id'])) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function updateEvent($arr) {
+  $conn = conn();
+  if (!checkConn($conn)) {
+    return false;
+  }
+  $eventType = str_replace('_', ' ', $arr['event_type']);
+  $query = "UPDATE `events`
+  SET
+    `name` = '" . $conn->real_escape_string($arr['name']) . "',
+    `venue_name` = '" . $conn->real_escape_string($arr['venue_name']) . "',
+    `venue_address` = '" . $conn->real_escape_string($arr['venue_address']) . "',
+    `venue_link` = '" . $conn->real_escape_string($arr['venue_link']) . "',
+    `fb_event` = '" . $conn->real_escape_string($arr['fb_event']) . "',
+    `other_event` = '" . $conn->real_escape_string($arr['other_event']) . "',
+    `image` = '" . $conn->real_escape_string($arr['image']) . "',
+    `cover_charge` = '" . $conn->real_escape_string($arr['cover_charge']) . "',
+    `date` = '" . $conn->real_escape_string($arr['date']) . "',
+    `start_time` = '" . $conn->real_escape_string($arr['start_time']) . "',
+    `event_type` = '" . $conn->real_escape_string($eventType) . "',
+    `age_restriction` = '" . $conn->real_escape_string($arr['age_restriction']) . "',
+    `description` = '" . $conn->real_escape_string($arr['description']) . "',
+    `host_email` = '" . $conn->real_escape_string($arr['host_email']) . "'
+  WHERE `id` = " . $arr['id'];
+  $res = $conn->query($query);
+  if (!checkRes($res, $conn, 'updateEvent')) {
+    return false;
+  }
+  return true;
+}
+
 function getUsers() {
   $conn = conn();
   if (!checkConn($conn)) {
@@ -408,7 +632,7 @@ function deleteUser($id) {
 function sendErrorReport($error) {
   $subject = "DIYMKE: Error Report";
   $message = "DIYMKE: Error Report \r\n" . $error;
-  $to = "nate@natenorthway.com";
+  $to = "mods@diymke.org";
   $from = "no-reply@diymke.org";
   $headers = 'From: no-reply@diymke.org' . "\r\n" .
     'Reply-To: no-reply@diymke.org' . "\r\n" .

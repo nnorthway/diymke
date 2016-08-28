@@ -30,7 +30,7 @@
     <meta name='format-detection' content='telephone=no' />
     <link rel='author' href='humans.txt' />
     <link rel='me' href='http://natenorthway.com' />
-    <link rel='me' href='mailto:nate@natenorthway.com' />
+    <link rel='me' href='mailto:mods@diymke.org' />
     <link rel='index' href='http://diymke.xyz/index.php' title='DIY:MKE' />
 
     <link rel="apple-touch-icon" sizes="57x57" href="assets/images/icon/apple-touch-icon-57x57.png">
@@ -106,6 +106,7 @@
         <a href='index' title='Home'>Home</a>
         <a href='about' title='About'>About</a>
         <a href='news' title='News'>News</a>
+        <a href='calendar' title='Calendar'>Calendar</a>
         <a href='bands' title='Bands'>Bands</a>
         <a href='venues' title='Venues'>Venues</a>
         <a href='submit' title='Submit'>Submit</a>

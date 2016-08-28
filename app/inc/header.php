@@ -11,6 +11,7 @@
     <a href='index' title='Home'>Dashboard</a>
     <a href='bands' title='Bands'>Bands</a>
     <a href='venues' title='Venues'>Venues</a>
+    <a href='events' title='Events'>Events</a>
     <a href='users' title='Users'>Users</a>
     <a href='logout' title='Log Out'>Log Out</a>
   </nav>

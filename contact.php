@@ -14,7 +14,7 @@
     <div class='six shift-three error-msg red' id='error'>
       <h1>Well, this is embarrassing</h1>
       <p>
-        Your message didn't send. Hrm. Care to email us at <a href='mailto:nate@natenorthway.com'>nate@natenorthway.com</a>?<br />
+        Your message didn't send. Hrm. Care to email us at <a href='mailto:mods@diymke.org'>mods@diymke.org</a>?<br />
         We're so sorry for this invonvineince. Things must really be broken
       </p>
     </div>
@@ -33,8 +33,11 @@
           <select name='subject'>
             <option value='error'>I Received an Error</option>
             <option value='privacy'>I want to know about my data</option>
+            <option value='edit'>I'd like a listing edited</option>
+            <option value='remove'>I'd like a listing removed</option>
+            <option value='feature'>I'd like to request a feature</option>
+            <option value='denied'>I'd like to know why my event was not posted</option>
             <option value='question'>I have a different question</option>
-            <option value='other'>Something Else</option>
           </select>
         </div>
         <div class='input-field'>
@@ -51,7 +54,7 @@
           <?php //TODO: fully implement recaptcha ?>
         </div>
         <div class='input-field'>
-          <button name='submit' value='submit'>Submit</button>
+          <button name='submit' value='submit' class='btn'>Submit</button>
         </div>
       </form>
     </div>

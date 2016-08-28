@@ -18,6 +18,9 @@ Location: Milwaukee, WI
 Beta Tester: Jason LeGear
 Location: Milwaukee, WI
 
+Beta Tester: Hal Crossno
+Location: Milwaukee, WI
+
 /*THANKS*/
 http://humanstxt.org
 https://github.com/joshbuchea/HEAD
@@ -25,7 +28,7 @@ http://bourbon.io
 http://css-tricks.com
 
 /*SITE*/
-Last Update: 2016/08/23
+Last Update: 2016/08/28
 Language: EN-US
 Doctype: HTML5
 Standards: HTML5, CSS3, PHP 7.0, SASS

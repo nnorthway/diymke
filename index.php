@@ -1,4 +1,7 @@
-<?php include 'inc/header.php'; ?>
+<?php
+include 'functions.php';
+include 'inc/header.php';
+?>
 <div id='item-group' class='cta-group'>
   <div id='theList' class='grid'>
     <div class='gray item'>
@@ -15,6 +18,15 @@
         Get your band or venue in our listings<br /><br />
         <a href='submit' title='Submit a Listing' class='btn'>Let's Go<i class='material-icons'>keyboard_arrow_right</i></a>
       </p>
+    </div>
+    <div class='gray item'>
+      <h1>Next Event</h1>
+      <?php $event = getNextEvent(); ?>
+      <p>
+        <?php echo $event['name']; ?><br />
+        on <?php echo date("F j, Y", strtotime($event['date'])); ?>
+      </p>
+      <a href='event.php?id=<?php echo $event['id']; ?>' class='btn'>View Event<i class='material-icons'>keyboard_arrow_right</i></a>
     </div>
     <div class='gray item'>
       <h1>Search</h1>
@@ -48,10 +60,8 @@
         a center of information which would help bands and promotors get in touch
         with other bands and venues to set up a show. <br /><br />
         We're about providing an outlet for bands and venues to put themselves
-        out there to play and host shows. This is not a platform to promote
-        releases, shows, events, or anything else - it is simply a platform to
-        say 'we're here and ready to play or host shows'. That's it. <br /><br />
-        We're also about punk ethics - sorry, Afton and Gorilla Promotions, you
+        out there to play, host, and promote shows and other punk events.<br /><br />
+        We're also about punk ethics - Afton and Gorilla Promotions, you
         can't hit people up using our platform. If we get reports that people are
         contacting bands and venues from 'pay-to-play' businesses, we will blacklist
         your IP address. Simple as that. <br /><br />
