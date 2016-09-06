@@ -81,7 +81,19 @@ $fields = $_POST['genre'];
         ?>
       </div>
     <?php
-  }} else {
+  }
+  if (!is_object($res)) {
+    ?>
+    <div class='gray item'>
+      <h3>We're sorry, there was an error getting your result. Please try again</h3>
+      <p>
+        Keep seeing this? Email <a href='mailto:mods@diymke.org'>mods@diymke.org</a>
+        about what happened.
+      </p>
+    </div>
+    <?php
+  }
+} else {
     ?>
     <div class='gray item'>
       <h3>No Search Term Entered</h3>

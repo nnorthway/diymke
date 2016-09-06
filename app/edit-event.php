@@ -93,7 +93,7 @@ include 'inc/header.php';
       <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' enctype='multipart/form-data'>
         <?php
           if ($row['image'] != null && $row['image'] != "") {
-            echo "<img src='../" . $row['image'] . "' class='event-image' />";
+            echo "<img src='../uploaded/" . $row['image'] . "' class='event-image' />";
           }
 
         ?>

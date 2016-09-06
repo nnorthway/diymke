@@ -381,7 +381,7 @@ WHERE `id` = '" . $id . "'";
     <p>
       Hi, " . $row['host_email'] . ", we're writing you to inform you
       that your event, " . $row['name'] . ", has been approved and can
-      be found at <a href='http://diymke.org/event.php?id" . $row['id'] . "'>this link</a>.
+      be found at <a href='http://diymke.org/event.php?id=" . $row['id'] . "'>this link</a>.
     </p>
     <hr />
     <small>
@@ -461,17 +461,6 @@ function deleteEvent($id) {
   return true;
 }
 
-function clearEvents() {
-  $res = getEvents();
-  while ($row = $res->fetch_assoc()) {
-    if ($row['date'] < date('Y-m-d')) {
-      if (!deleteEvent($row['id'])) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
 
 function updateEvent($arr) {
   $conn = conn();

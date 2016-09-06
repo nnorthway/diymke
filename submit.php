@@ -218,6 +218,9 @@
         </div>
         <div class='input-field'>
           <label for='description'>Description</label>
+          <small>
+            Hot tip: to insert a line break, type "&lt;br&gt;"
+          </small>
           <textarea name='description' placeholder='This show is gonna be off the chain!'></textarea>
         </div>
         <div class='input-field'>

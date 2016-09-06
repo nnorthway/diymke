@@ -52,7 +52,7 @@ include 'inc/header.php';
               Event Type: <?php echo htmlspecialchars_decode($row['event_type']); ?><br />
               Age Restriction: <?php echo htmlspecialchars_decode($row['age_restriction']); ?><br />
             <p class='lead'>
-              <?php echo htmlspecialchars_decode($row['description']); ?>
+              <?php echo truncate(htmlspecialchars_decode($row['description'])); ?>
             </p>
             <a href='event.php?id="<?php echo $row['id']; ?>"' class='btn'>View Event Page<i class='material-icons'>keyboard_arrow_right</i></a>
           </div>

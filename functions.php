@@ -13,14 +13,14 @@ function dbQuery($q) {
   $conn = conn();
   if ($conn->connect_errno) {
     $error = "Failed to connect to MySQL: (Error " . $conn->connect_errno . ") " . $conn->connect_error;
-    sendErrorReport($error);
+    sendErrorReport($error, "dbQuery");
   }
   $res = $conn->query($q);
   if ($res) {
     return $res;
   } else {
     $error = "Failed to submit query: (Error " . $conn->sqlstate . ") " . $conn->error;
-    sendErrorReport($error);
+    sendErrorReport($error, "dbQuery");
     return false;
   }
 }
@@ -29,12 +29,12 @@ function dbInsert($query) {
   $conn = conn();
   if ($conn->connect_errno) {
     $error = "Failed to connect to MySQL: (Error " . $conn->connect_errno . ") " . $conn->connect_error;
-    sendErrorReport($error);
+    sendErrorReport($error, "dbInsert");
     if ($conn->query($query)) {
       return true;
     } else {
       $error = "Failed to submit query: (Error: " . $conn->sqlstate . ") " . $conn->error;
-      sendErrorReport($error);
+      sendErrorReport($error, "dbInsert");
       return false;
     }
   }
@@ -306,7 +306,7 @@ function getEvent($id) {
 }
 
 function getEvents() {
-  $query = "SELECT * FROM `events` ORDER BY `date` ASC";
+  $query = "SELECT * FROM `events` WHERE `is_verified` = 1 AND `is_moderated` = 1 ORDER BY `date` ASC";
   $res = dbQuery($query);
   if (!$res) {
     unset($res);
@@ -386,15 +386,19 @@ function search($term, $table) {
   }
 }
 
-function sendErrorReport($error) {
+function sendErrorReport($error, $function) {
   $subject = "DIYMKE: Error Report";
-  $message = "DIYMKE: Error Report \r\n" . $error;
+  $message = "DIYMKE: Error Report \r\n" . $error . "\r\nIn the function " . $function;
   $to = "mods@diymke.org";
   $from = "no-reply@diymke.org";
   $headers = 'From: no-reply@diymke.org' . "\r\n" .
     'Reply-To: no-reply@diymke.org' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
   mail($to, $subject, $message, $headers);
+}
+
+function truncate($text) {
+  return substr($text, 0, 100) . "...";
 }
 
 ?>
