@@ -11,8 +11,8 @@
     <script src='../assets/scripts/scripts.js' type='text/javascript'></script>
     <meta name='application-name' content='DIY:MKE' />
     <meta name='description' content="DIYMKE is a listing service which helps bands and promoters in Milwaukee's Punk Scene easily arrange shows" />
-    <meta name='robots' content='index,follow,noodp' />
-    <meta name='googlebot' content='index,follow' />
+    <meta name='robots' content='noindex,nofollow,noodp' />
+    <meta name='googlebot' content='noindex,nofollow' />
     <meta name='google' content='nositelinkssearchbox' />
     <meta name='google' content='notranslate' />
     <!--<meta name='google-site-verification' content='verification_token' />-->

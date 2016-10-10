@@ -14,7 +14,7 @@ if (!$link) {
 
   $subject = "DIYMKE Dashboard: Password Reset Requested";
 
-  $url = "localhost:8888/diymke/app/reset.php?link=true&id=" . $id . "&time=" . $time;
+  $url = "http://diymke.org/app/reset.php?link=true&id=" . $id . "&time=" . $time;
 
   $message = "Hi, " . $name . "\r\n
   A password reset request was recently requested for your account.\r\n
